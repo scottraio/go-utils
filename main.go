@@ -50,7 +50,8 @@ func Distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...st
 // return the value of the key
 func GetDotEnvVariable(key string) string {
 	// load .env file
-	godotenv.Load(".env")
+
+	godotenv.Load()
 
 	return os.Getenv(key)
 }
