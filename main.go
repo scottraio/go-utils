@@ -3,8 +3,10 @@ package utils
 import (
 	"log"
 	"math"
-	"github.com/joho/godotenv"
+	"os"
+
 	"github.com/TwiN/go-color"
+	"github.com/joho/godotenv"
 )
 
 func HasError(err error) {
@@ -41,17 +43,18 @@ func Distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...st
 		}
 	}
 
-	return dist	
-	
-	// use godot package to load/read the .env file and
-	// return the value of the key
-	func GetDotEnvVariable(key string) string {
-		// load .env file
-		err := godotenv.Load(".env")
-	
-		if err != nil {
-			log.Fatalf("Error loading .env file")
-		}
-	
-		return os.Getenv(key)
+	return dist
+}
+
+// use godot package to load/read the .env file and
+// return the value of the key
+func GetDotEnvVariable(key string) string {
+	// load .env file
+	err := godotenv.Load(".env")
+
+	if err != nil {
+		log.Fatalf("Error loading .env file")
 	}
+
+	return os.Getenv(key)
+}
