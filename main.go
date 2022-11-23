@@ -3,7 +3,7 @@ package utils
 import (
 	"log"
 	"math"
-
+	"github.com/joho/godotenv"
 	"github.com/TwiN/go-color"
 )
 
@@ -41,5 +41,17 @@ func Distance(lat1 float64, lng1 float64, lat2 float64, lng2 float64, unit ...st
 		}
 	}
 
-	return dist
-}
+	return dist	
+	
+	// use godot package to load/read the .env file and
+	// return the value of the key
+	func GetDotEnvVariable(key string) string {
+		// load .env file
+		err := godotenv.Load(".env")
+	
+		if err != nil {
+			log.Fatalf("Error loading .env file")
+		}
+	
+		return os.Getenv(key)
+	}
